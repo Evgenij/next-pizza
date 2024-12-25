@@ -14,18 +14,18 @@ export const Header: React.FC<Props> = ({ className }) => {
 		<header className={cn("border border-b", className)}>
 			<Container className="flex items-center justify-between py-8 gap-10">
 				<div className="flex items-center space-x-2">
-					<Image src="/logo.svg" alt="Logo" width={48} height={48} />
-					<div>
-						<h1 className="text-2xl uppercase font-black">
-							NEXT PIZZA
+					<Image src="/logo.svg" alt="Logo" width={24} height={24} />
+					<div className="flex flex-col space-y-1">
+						<h1 className="text-2xl uppercase font-black leading-none">
+							NEXT Wheels
 						</h1>
-						<p className="text-xm text-gray-400 leading-3">
-							Is very tasty
+						<p className="text-xm text-gray-400 leading-4">
+							For your speed
 						</p>
 					</div>
 				</div>
 				<div className="flex-1">
-					<Input placeholder="search pizza"></Input>
+					<Input placeholder="search wheel"></Input>
 				</div>
 				<div className="flex items-center gap-3">
 					<Button

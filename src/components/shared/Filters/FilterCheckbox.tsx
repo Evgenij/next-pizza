@@ -1,10 +1,10 @@
 "use client";
-
+import { Checkbox } from "@/components/ui";
+import { Diameter } from "@/types/types";
 import React from "react";
-import { Checkbox } from "../ui/checkbox";
 
 export interface FilterCheckboxProps {
-	text: string;
+	text: string | Diameter;
 	value: string;
 	endAdornment?: React.ReactNode;
 	onCheckedChange?: (checked: boolean) => void;
@@ -26,7 +26,7 @@ export const FilterCheckbox: React.FC<FilterCheckboxProps> = ({
 				onCheckedChange={onCheckedChange}
 				checked={checked}
 				value={value}
-				className="rounded-[8px] w-6 h-6"
+				className="rounded-[3px] w-6 h-6"
 				id={`checkbox-${String(name)}-${String(value)}`}
 			/>
 			<label

@@ -1,9 +1,12 @@
 export { Container } from "./Container";
 export { Header } from "./Header";
 export { Title } from "./Title";
-export { Categories } from "./Categories";
+export { Categories } from "./CarBrands";
 export { SortPopup } from "./SortPopup";
 export { TopBar } from "./TopBar";
-export { Filters } from "./Filters";
-export { FilterCheckbox } from "./FilterCheckbox";
-export { RangeSlider } from "./RangeSlider";
+export { Filters } from "./Filters/Filters";
+export { FilterCheckbox } from "./Filters/FilterCheckbox";
+export { RangeSlider } from "./Filters/RangeSlider";
+export { CheckboxGroup } from "./Filters/CheckboxGroup";
+export { ProductCard } from "./ProductCard";
+export { ProductsGroupList } from "./ProductsGroupList";

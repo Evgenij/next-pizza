@@ -1,15 +1,16 @@
 import React, { FC } from "react";
-import { Categories } from "./Categories";
+import { CarBrands } from "./CarBrands";
 import { SortPopup } from "./SortPopup";
 import { Container } from "./Container";
 import { cn } from "@/lib/utils";
+import { ICarBrand } from "@/types/types";
 
 interface Props {
 	className?: string;
-	categories: string[]; //Category[];
+	carBrands: ICarBrand[]; //Category[];
 }
 
-export const TopBar: FC<Props> = ({ className, categories }) => {
+export const TopBar: FC<Props> = ({ className, carBrands }) => {
 	return (
 		<div
 			className={cn(
@@ -18,7 +19,7 @@ export const TopBar: FC<Props> = ({ className, categories }) => {
 			)}
 		>
 			<Container className="flex items-center justify-between">
-				<Categories items={categories} />
+				<CarBrands items={carBrands} />
 				<SortPopup />
 			</Container>
 		</div>
