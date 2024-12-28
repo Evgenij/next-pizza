@@ -1,0 +1,143 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource DB {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+enum UserRole {
+  ADMIN
+  CUSTOMER
+}
+
+model User {
+  id Int @id @default(autoincrement())
+
+  name     String
+  surname  String
+  email    String   @unique
+  password String
+  role     UserRole @default(CUSTOMER)
+
+  cart             Cart?
+  order            Order[]
+  verificationCode VerificationCode?
+  verified         DateTime          @default(now())
+
+  // system for authentication
+  provider   String?
+  providerId String?
+
+  created_at DateTime? @default(now())
+  updated_at DateTime? @updatedAt
+}
+
+model CarBrand {
+  id Int @id @default(autoincrement())
+
+  name   String  @unique
+  wheels Wheel[]
+
+  created_at DateTime? @default(now())
+  updated_at DateTime? @updatedAt
+}
+
+model Wheel {
+  id Int @id @default(autoincrement())
+
+  name  String
+  image String
+  price Int
+
+  carBrand   CarBrand? @relation(fields: [carBrandId], references: [id])
+  carBrandId Int?
+
+  diameters   Diameter[]
+  cartProduct CartProduct[]
+
+  created_at DateTime? @default(now())
+  updated_at DateTime? @updatedAt
+}
+
+model Diameter {
+  id Int @id @default(autoincrement())
+
+  name        String        @unique
+  price       Int
+  wheels      Wheel[]
+  cartProduct CartProduct[]
+
+  created_at DateTime? @default(now())
+  updated_at DateTime? @updatedAt
+}
+
+model Cart {
+  id Int @id @default(autoincrement())
+
+  userId Int?  @unique
+  User   User? @relation(fields: [userId], references: [id])
+
+  cartProduct CartProduct[]
+  totalAmount Int           @default(0)
+  token       String
+
+  created_at DateTime? @default(now())
+  updated_at DateTime? @updatedAt
+}
+
+model CartProduct {
+  id Int @id @default(autoincrement())
+
+  wheelId Int
+  wheel   Wheel @relation(fields: [wheelId], references: [id])
+
+  cartId Int
+  cart   Cart @relation(fields: [cartId], references: [id])
+
+  diameters Diameter[]
+  quantity  Int        @default(1)
+
+  created_at DateTime? @default(now())
+  updated_at DateTime? @updatedAt
+}
+
+enum OrderStatus {
+  PENDING
+  SUCCEEDED
+  CANCELED
+}
+
+model Order {
+  id Int @id @default(autoincrement())
+
+  userId Int?
+  user   User? @relation(fields: [userId], references: [id])
+
+  token       String
+  totalAmount Int         @default(0)
+  orderTime   DateTime
+  status      OrderStatus @default(PENDING)
+  paymentId   String?
+
+  customerName    String
+  customerEmail   String
+  customerPhone   String
+  customerAddress String
+  customerComment String?
+
+  created_at DateTime? @default(now())
+  updated_at DateTime? @updatedAt
+}
+
+model VerificationCode {
+  id Int @id @default(autoincrement())
+
+  userId Int    @unique
+  user   User   @relation(fields: [userId], references: [id])
+  code   String
+
+  created_at DateTime? @default(now())
+}
