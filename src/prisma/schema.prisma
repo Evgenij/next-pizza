@@ -25,6 +25,7 @@ model User {
   cart             Cart?
   order            Order[]
   verificationCode VerificationCode?
+  verified         DateTime          @default(now())
 
   // system for authentication
   provider   String?
@@ -49,6 +50,7 @@ model Wheel {
 
   name  String
   image String
+  price Int
 
   carBrand   CarBrand? @relation(fields: [carBrandId], references: [id])
   carBrandId Int?
@@ -63,9 +65,10 @@ model Wheel {
 model Diameter {
   id Int @id @default(autoincrement())
 
-  name   String  @unique
-  price  Int
-  wheels Wheel[]
+  name        String        @unique
+  price       Int
+  wheels      Wheel[]
+  cartProduct CartProduct[]
 
   created_at DateTime? @default(now())
   updated_at DateTime? @updatedAt
@@ -94,7 +97,8 @@ model CartProduct {
   cartId Int
   cart   Cart @relation(fields: [cartId], references: [id])
 
-  quantity Int @default(1)
+  diameters Diameter[]
+  quantity  Int        @default(1)
 
   created_at DateTime? @default(now())
   updated_at DateTime? @updatedAt
