@@ -66,6 +66,7 @@ async function up() {
 	await prisma.wheel.create({
 		data: {
 			name: "YO-4200",
+			color: "Gold",
 			carBrandId: 1,
 			price: 500,
 			image: "/pictures/wheels/pol_pl_4x-Felgi-19-5x120-m-in-do-BMW-3-E46-E90-E91-E92-E93-F30-F31-4-F32-F33-F36-Z4-E89-B5601-91319_1.png",
@@ -78,6 +79,7 @@ async function up() {
 	await prisma.wheel.create({
 		data: {
 			name: "BX-5400",
+			color: "Gray",
 			carBrandId: 2,
 			price: 600,
 			image: "/pictures/wheels/pol_pm_4x-Felgi-15-m-in-do-BMW-e21-e30-VW-Golf-I-II-III-GTI-Civic-Astra-HX025-L1879-67709_5.png",
@@ -90,6 +92,7 @@ async function up() {
 	await prisma.wheel.create({
 		data: {
 			name: "RX210",
+			color: "Gray",
 			carBrandId: 3,
 			price: 900,
 			image: "/pictures/wheels/pol_pm_4x-Felgi-16-17-m-in-do-SMART-Brabus-Forfour-II-Fortwo-III-FR762-80654_4.png",

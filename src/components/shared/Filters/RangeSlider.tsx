@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 type SliderProps = {
 	className?: string;
-	min: number;
+	min?: number;
 	max: number;
 	step: number;
 	formatLabel?: (value: number) => string;
@@ -18,7 +18,7 @@ const RangeSlider = React.forwardRef(
 	(
 		{
 			className,
-			min,
+			min = 0,
 			max,
 			step,
 			formatLabel,

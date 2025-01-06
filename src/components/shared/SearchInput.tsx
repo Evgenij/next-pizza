@@ -40,7 +40,12 @@ export const SearchInput: FC<Props> = ({ className }) => {
 
 	useDebounce(
 		() => {
-			Api.wheels.search(searchQuery).then((data) => setWheels(data));
+			Api.wheels
+				.search(searchQuery)
+				.then((data) => setWheels(data))
+				.catch((e) => {
+					console.log(e);
+				});
 		},
 		500, // 1/2 second
 		[searchQuery]
@@ -80,10 +85,10 @@ export const SearchInput: FC<Props> = ({ className }) => {
 								onClick={onClickItem}
 								key={wheel.id}
 								className="flex rounded-sm items-center gap-3 w-full px-3 py-2 hover:bg-slate-100"
-								href={`/product/${wheel.id}`}
+								href={`/wheel/${wheel.id}`}
 							>
 								<img
-									className="rounded-sm h-8 w-8"
+									className="rounded-sm h-16 w-16"
 									src={wheel.image}
 									alt={wheel.name}
 								/>
