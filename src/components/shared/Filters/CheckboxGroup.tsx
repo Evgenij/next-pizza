@@ -9,7 +9,7 @@ type Item = FilterCheckboxProps;
 interface Props {
 	title: string;
 	items: Item[];
-	defaultItems: Item[];
+	defaultItems?: Item[];
 	limit?: number;
 	inputPlaceholder?: string;
 	onClickCheckbox?: (id: string) => void;
