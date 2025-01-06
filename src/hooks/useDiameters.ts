@@ -1,7 +1,6 @@
 import { Api } from "@/services/apiClient";
 import { Diameter } from "@prisma/client";
 import { useEffect, useState } from "react";
-import { useSet } from "react-use";
 
 type DiameterItem = Pick<Diameter, "id" | "name">;
 
@@ -12,11 +11,9 @@ interface ReturnProps {
 	onAddID: (id: string) => void;
 }
 
-export const useFilterDiameters = (): ReturnProps => {
+export const useDiameters = () => {
 	const [diameters, setDiameters] = useState<ReturnProps["diameters"]>([]);
 	const [loading, setLoading] = useState(true);
-
-	const [selectedDiameters, { toggle }] = useSet(new Set<string>([]));
 
 	useEffect(() => {
 		async function getDiameters() {
@@ -39,5 +36,5 @@ export const useFilterDiameters = (): ReturnProps => {
 		getDiameters();
 	}, []);
 
-	return { diameters, loading, onAddID: toggle, selectedDiameters };
+	return { diameters, loading };
 };
