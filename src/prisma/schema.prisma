@@ -13,6 +13,13 @@ enum UserRole {
   CUSTOMER
 }
 
+enum WheelColor {
+  Black
+  Gray
+  White
+  Gold
+}
+
 model User {
   id Int @id @default(autoincrement())
 
@@ -50,6 +57,7 @@ model Wheel {
 
   name  String
   image String
+  color WheelColor
   price Int
 
   carBrand   CarBrand? @relation(fields: [carBrandId], references: [id])

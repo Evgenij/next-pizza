@@ -2,7 +2,7 @@
 
 import React, { FC, useState } from "react";
 import { FilterCheckbox, FilterCheckboxProps } from "./FilterCheckbox";
-import { Input } from "@/components/ui";
+import { Input, Skeleton } from "@/components/ui";
 
 type Item = FilterCheckboxProps;
 
@@ -12,10 +12,12 @@ interface Props {
 	defaultItems: Item[];
 	limit?: number;
 	inputPlaceholder?: string;
-	onChange?: (values: string[]) => void;
+	onClickCheckbox?: (id: string) => void;
 	defaultValue?: string[];
 	name: string;
+	loading?: boolean;
 	className?: string;
+	selectedItems: Set<string>;
 }
 
 export const CheckboxGroup: FC<Props> = ({
@@ -23,9 +25,11 @@ export const CheckboxGroup: FC<Props> = ({
 	items,
 	defaultItems,
 	limit = 5,
-	inputPlaceholder = "Поиск...",
-	onChange,
+	inputPlaceholder = "Find size...",
+	loading,
+	onClickCheckbox,
 	defaultValue,
+	selectedItems,
 	className,
 	name,
 }) => {
@@ -39,6 +43,20 @@ export const CheckboxGroup: FC<Props> = ({
 					.includes(searchValue.toLocaleLowerCase())
 		  )
 		: (defaultItems || items).slice(0, limit);
+
+	if (loading) {
+		return (
+			<div className={className}>
+				<p className="font-bold mb-3">{title}</p>
+
+				{...Array(limit)
+					.fill(0)
+					.map((_, index) => (
+						<Skeleton key={index} className="h-6 mb-3 rounded-sm" />
+					))}
+			</div>
+		);
+	}
 
 	const onChangeSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setSearchValue(e.target.value);
@@ -64,8 +82,8 @@ export const CheckboxGroup: FC<Props> = ({
 						text={item.text}
 						value={item.value}
 						endAdornment={item.endAdornment}
-						checked={false}
-						onCheckedChange={(ids) => console.log(ids)}
+						checked={selectedItems?.has(item.value)}
+						onCheckedChange={() => onClickCheckbox?.(item.value)}
 						name={name}
 					/>
 				))}
@@ -79,7 +97,10 @@ export const CheckboxGroup: FC<Props> = ({
 						}
 					>
 						<button
-							onClick={() => setShowAll(!showAll)}
+							onClick={() => {
+								setSearchValue("");
+								setShowAll(!showAll);
+							}}
 							className="text-primary mt-3"
 						>
 							{showAll ? "Hide" : "+ Show all"}
