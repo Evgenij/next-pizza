@@ -12,7 +12,8 @@ import { useCarBrandStore } from "@/store/carBrand";
 interface Props {
 	title: string;
 	// items: ProductWithRelations[];
-	items: Wheel[];
+	// items: Wheel[];
+	items: any[];
 	brandId: number;
 	className?: string;
 	listClassName?: string;
@@ -58,7 +59,7 @@ export const ProductsGroupList: FC<Props> = ({
 						key={product.id}
 						id={product.id}
 						name={product.name}
-						imageUrl={product.imageUrl}
+						imageUrl={product.image}
 						price={product.price}
 						diameters={product.diameters}
 					/>

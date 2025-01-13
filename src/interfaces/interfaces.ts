@@ -1,4 +1,4 @@
-import { Diameter } from "@/types/types";
+import { Diameter } from "@prisma/client";
 
 export interface Wheel {
 	id: number;

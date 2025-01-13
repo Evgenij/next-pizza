@@ -27,7 +27,9 @@ export const ProductCard: React.FC<Wheel> = ({
 				<Title text={name} size="sm" className="mb-1 mt-3 font-bold" />
 
 				<p className="text-sm text-gray-400">
-					{diameters.map((value) => value).join(", ")}
+					{diameters.map((diameter) => (
+						<span>{diameter.name} / </span>
+					))}
 				</p>
 
 				<div className="flex justify-between items-center mt-4">

@@ -2,12 +2,12 @@
 
 import { cn } from "@/lib/utils";
 import { useCarBrandStore } from "@/store/carBrand";
-import { ICarBrand } from "@/types/types";
+import { CarBrand } from "@prisma/client";
 import React from "react";
 
 interface Props {
 	className?: string;
-	items: ICarBrand[];
+	items: CarBrand[];
 }
 
 export const CarBrands: React.FC<Props> = ({ className, items }) => {

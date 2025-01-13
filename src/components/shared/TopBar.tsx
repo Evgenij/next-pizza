@@ -3,11 +3,11 @@ import { CarBrands } from "./CarBrands";
 import { SortPopup } from "./SortPopup";
 import { Container } from "./Container";
 import { cn } from "@/lib/utils";
-import { ICarBrand } from "@/types/types";
+import { CarBrand } from "@prisma/client";
 
 interface Props {
 	className?: string;
-	carBrands: ICarBrand[]; //Category[];
+	carBrands: CarBrand[];
 }
 
 export const TopBar: FC<Props> = ({ className, carBrands }) => {
