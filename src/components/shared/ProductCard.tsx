@@ -15,7 +15,7 @@ export const ProductCard: React.FC<Wheel> = ({
 }) => {
 	return (
 		<div className={className}>
-			<Link href={`/product/${id}`}>
+			<Link href={`/wheel/${id}`}>
 				<div className="flex justify-center p-6 h-[260px]">
 					<img
 						className="w-[215px] h-[215px]"
@@ -28,7 +28,7 @@ export const ProductCard: React.FC<Wheel> = ({
 
 				<p className="text-sm text-gray-400">
 					{diameters.map((diameter) => (
-						<span>{diameter.name} / </span>
+						<span key={diameter.id}>{diameter.name} / </span>
 					))}
 				</p>
 

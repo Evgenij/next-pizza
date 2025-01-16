@@ -1,10 +1,9 @@
 "use client";
 import { Checkbox } from "@/components/ui";
-import { Diameter } from "@/types/types";
 import React from "react";
 
 export interface FilterCheckboxProps {
-	text: string | Diameter;
+	text: string;
 	value: string;
 	endAdornment?: React.ReactNode;
 	onCheckedChange?: (checked: boolean) => void;

@@ -11,3 +11,5 @@ export { CheckboxGroup } from "./Filters/CheckboxGroup";
 export { ProductCard } from "./ProductCard";
 export { ProductsGroupList } from "./ProductsGroupList";
 export { SearchInput } from "./SearchInput";
+export { WheelImage } from "./WheelImage";
+export { SelectorDiameter } from "./SelectorDiameter";

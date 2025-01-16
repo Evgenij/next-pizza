@@ -59,8 +59,6 @@ export default async function Home() {
 		},
 	});
 
-	console.log(carBrands);
-
 	return (
 		<>
 			<Container className="mt-8">
