@@ -33,7 +33,7 @@ export const ProductCard: React.FC<Wheel> = ({
 				</p>
 
 				<div className="flex justify-between items-center mt-4">
-					<span className="text-[20px]">
+					<span className="text-base">
 						from <b>{price} PLN</b>
 					</span>
 

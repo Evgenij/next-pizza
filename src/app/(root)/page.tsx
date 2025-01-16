@@ -43,10 +43,6 @@ export default async function Home() {
 	// 	},
 	// 	{
 	// 		id: 9,
-	// 		name: "Skoda",
-	// 	},
-	// 	{
-	// 		id: 10,
 	// 		name: "Suzuki",
 	// 	},
 	// ];
