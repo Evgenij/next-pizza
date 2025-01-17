@@ -1,13 +1,6 @@
 import type { Metadata } from "next";
-import { Chakra_Petch } from "next/font/google";
-import "@/app/globals.css";
-import { Header } from "@/components/shared";
-
-const font = Chakra_Petch({
-	// subsets: ["cyrillic"],
-	variable: "--font-chakra_petch",
-	weight: ["300", "400", "500", "600", "700"],
-});
+import { Header } from "@/shared/components/shared";
+import { font } from "../layout";
 
 export const metadata: Metadata = {
 	title: "Next Wheels | UIXER",
@@ -16,15 +9,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
 	children,
+	modal,
 }: Readonly<{
 	children: React.ReactNode;
+	modal: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
-			<body className={`${font.variable} antialiased min-h-screen`}>
-				<Header />
-				{children}
-			</body>
-		</html>
+		<main className={`${font.variable} antialiased min-h-screen`}>
+			<Header />
+			{children}
+			{modal}
+		</main>
 	);
 }

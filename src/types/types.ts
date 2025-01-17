@@ -1,3 +1,5 @@
+import { Diameter, Wheel } from "@prisma/client";
+
 type CarBrand =
 	| "Opel"
 	| "Audi"
@@ -14,3 +16,5 @@ export interface ICarBrand {
 	id: number;
 	name: CarBrand;
 }
+
+export type IWheelFullData = Wheel & { diameters: Diameter[] };

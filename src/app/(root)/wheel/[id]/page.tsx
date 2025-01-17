@@ -3,7 +3,7 @@ import {
 	SelectorDiameter,
 	Title,
 	WheelImage,
-} from "@/components/shared";
+} from "@/shared/components/shared";
 import { prisma } from "@/prisma/prismaClient";
 import { notFound } from "next/navigation";
 import React from "react";
@@ -27,14 +27,6 @@ export default async function PageWheel({ className, params }: Props) {
 
 	if (!dataWheel) return notFound();
 
-	// inner functions
-	const someFunc = () => {};
-
-	// handlers
-	const handlerChange: React.ChangeEventHandler<HTMLInputElement> = (
-		e: React.ChangeEvent<HTMLInputElement>
-	) => {};
-
 	return (
 		<Container className="flex gap-4 my-10">
 			<div className="w-1/2">
@@ -50,15 +42,6 @@ export default async function PageWheel({ className, params }: Props) {
 					size="md"
 					className="font-extrabold mb-1"
 				></Title>
-				<SelectorDiameter
-					items={dataWheel.diameters.map((item) => ({
-						id: item.id,
-						value: item.name,
-						name: item.name,
-					}))}
-					selectedValues={[1]}
-					onClick={() => console.log("1")}
-				/>
 			</div>
 		</Container>
 	);

@@ -4,7 +4,7 @@ import {
 	ProductsGroupList,
 	Title,
 	TopBar,
-} from "@/components/shared";
+} from "@/shared/components/shared";
 import { prisma } from "@/prisma/prismaClient";
 
 export default async function Home() {

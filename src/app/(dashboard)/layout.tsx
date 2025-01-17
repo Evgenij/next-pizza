@@ -1,12 +1,5 @@
 import type { Metadata } from "next";
-import { Chakra_Petch } from "next/font/google";
-import "@/app/globals.css";
-
-const font = Chakra_Petch({
-	// subsets: ["cyrillic"],
-	variable: "--font-chakra_petch",
-	weight: ["300", "400", "500", "600", "700"],
-});
+import { font } from "../layout";
 
 export const metadata: Metadata = {
 	title: "Next Wheels | UIXER",
